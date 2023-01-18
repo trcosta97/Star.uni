@@ -1,6 +1,6 @@
 package star.uni.api.professor;
 
-public enum Diciplina {
+public enum Disciplina {
     PORTUGUES,
     MATEMATICA,
     FISICA,

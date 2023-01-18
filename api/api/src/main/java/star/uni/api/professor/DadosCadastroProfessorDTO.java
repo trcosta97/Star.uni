@@ -1,6 +1,22 @@
 package star.uni.api.professor;
 
-import star.uni.api.endereco.Endereco;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import star.uni.api.endereco.DadosEnderecoDTO;
 
-public record DadosCadastroProfessorDTO(String nome, String email, String cpf, Diciplina diciplina, Endereco endereco) {
+public record DadosCadastroProfessorDTO(
+        @NotBlank
+        String nome,
+        @NotBlank @Email
+        String email,
+        @NotBlank
+        @Pattern(regexp = "\\d{4,11}")
+        String cpf,
+        @NotNull
+        Disciplina disciplina,
+        @NotNull @Valid
+        DadosEnderecoDTO endereco) {
 }
