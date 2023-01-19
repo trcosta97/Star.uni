@@ -1,15 +1,14 @@
 package star.uni.api.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import star.uni.api.aluno.Aluno;
-import star.uni.api.aluno.AlunoRepository;
-import star.uni.api.aluno.DadosCadastroAlunoDTO;
-import star.uni.api.aluno.DadosListagemAlunoDTO;
+import star.uni.api.aluno.*;
+import star.uni.api.professor.DadosListagemProfessorDTO;
 
 import java.util.List;
 
@@ -26,7 +25,24 @@ public class AlunoController {
     }
 
     @GetMapping
-    public Page<DadosListagemAlunoDTO> listarAlunos(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemAlunoDTO::new);
+    public Page<DadosListagemAlunoDTO> listarAlunos(@PageableDefault(size=10, sort = {"nome"}) Pageable paginacao){
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemAlunoDTO::new);
     }
+
+    @PutMapping
+    @Transactional
+    public void atualizarAluno(@RequestBody @Valid DadosAtualizacaoAlunoDTO dados){
+        var aluno = repository.getReferenceById(dados.id());
+        aluno.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluirAluno(@PathVariable Long id){
+        var aluno = repository.getReferenceById(id);
+        aluno.excluir();
+
+    }
+
+
 }

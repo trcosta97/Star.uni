@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
 import star.uni.api.endereco.Endereco;
 
 @Table(name = "alunos")
@@ -22,12 +21,11 @@ public class Aluno {
     private String nome;
     private String email;
     private String cpf;
-
     @Enumerated(EnumType.STRING)
     private Sala sala;
-
     @Embedded
     private Endereco endereco;
+    private Boolean ativo;
 
     public Aluno(DadosCadastroAlunoDTO dados) {
         this.nome = dados.nome();
@@ -35,5 +33,25 @@ public class Aluno {
         this.cpf = dados.cpf();
         this.sala = dados.sala();
         this.endereco = new Endereco(dados.endereco());
+        this.ativo = true;
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoAlunoDTO dados) {
+        if(dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if(dados.email() != null){
+            this.email = dados.email();
+        }
+        if(dados.sala() != null){
+            this.sala = dados.sala();
+        }
+        if(dados.endereco() != null){
+            this.endereco.atualizarInformacoes(dados.endereco());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }
