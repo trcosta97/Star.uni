@@ -1,7 +1,6 @@
 package star.uni.api.controller;
 
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,9 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import star.uni.api.professor.*;
+import star.uni.api.domain.professor.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("professores")
@@ -57,6 +55,12 @@ public class  ProfessorController {
         professor.excluir();
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detalharProfessor(@PathVariable Long id){
+        var professor = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoProfessorDTO(professor));
     }
 
 

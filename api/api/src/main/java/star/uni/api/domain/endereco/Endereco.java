@@ -1,4 +1,4 @@
-package star.uni.api.endereco;
+package star.uni.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

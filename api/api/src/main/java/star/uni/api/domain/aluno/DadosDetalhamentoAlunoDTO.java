@@ -1,7 +1,6 @@
-package star.uni.api.aluno;
+package star.uni.api.domain.aluno;
 
-import star.uni.api.endereco.Endereco;
-import star.uni.api.professor.DadosDetalhamentoProfessorDTO;
+import star.uni.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoAlunoDTO(Long id, String nome, String email, String cpf, Sala sala, Endereco endereco) {
 

@@ -1,4 +1,4 @@
-package star.uni.api.aluno;
+package star.uni.api.domain.aluno;
 
 public enum Sala {
     EM1_a,

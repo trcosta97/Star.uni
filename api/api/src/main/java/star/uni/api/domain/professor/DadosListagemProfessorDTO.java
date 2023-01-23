@@ -1,4 +1,4 @@
-package star.uni.api.professor;
+package star.uni.api.domain.professor;
 
 public record DadosListagemProfessorDTO(Long id, String nome, String email, Disciplina disciplina) {
 

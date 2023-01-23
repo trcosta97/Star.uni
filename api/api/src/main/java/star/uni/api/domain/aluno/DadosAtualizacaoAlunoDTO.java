@@ -1,13 +1,13 @@
-package star.uni.api.professor;
+package star.uni.api.domain.aluno;
 
 import jakarta.validation.constraints.NotNull;
-import star.uni.api.endereco.DadosEnderecoDTO;
+import star.uni.api.domain.endereco.DadosEnderecoDTO;
 
-public record DadosAtualizacaoProfessorDTO(
+public record DadosAtualizacaoAlunoDTO(
         @NotNull
         Long id,
         String nome,
         String email,
-        Disciplina disciplina,
+        Sala sala,
         DadosEnderecoDTO endereco) {
 }

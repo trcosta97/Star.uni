@@ -1,52 +1,51 @@
-package star.uni.api.aluno;
+package star.uni.api.domain.professor;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import star.uni.api.endereco.Endereco;
+import star.uni.api.domain.endereco.Endereco;
 
-@Table(name = "alunos")
-@Entity(name = "Aluno")
+@Table(name = "professores")
+@Entity(name= "Professor")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Aluno {
+public class Professor {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
     private String cpf;
     @Enumerated(EnumType.STRING)
-    private Sala sala;
+    private Disciplina disciplina;
     @Embedded
     private Endereco endereco;
     private Boolean ativo;
 
-    public Aluno(DadosCadastroAlunoDTO dados) {
+        public Professor(DadosCadastroProfessorDTO dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.cpf = dados.cpf();
-        this.sala = dados.sala();
+        this.disciplina = dados.disciplina();
         this.endereco = new Endereco(dados.endereco());
         this.ativo = true;
     }
 
-    public void atualizarInformacoes(DadosAtualizacaoAlunoDTO dados) {
-        if(dados.nome() != null){
+    public void atualizarInformacoes(DadosAtualizacaoProfessorDTO dados) {
+        if(dados.nome() != null) {
             this.nome = dados.nome();
         }
-        if(dados.email() != null){
+        if(dados.email() != null) {
             this.email = dados.email();
         }
-        if(dados.sala() != null){
-            this.sala = dados.sala();
+        if(dados.disciplina() != null){
+            this.disciplina = dados.disciplina();
         }
-        if(dados.endereco() != null){
+        if (dados.endereco() != null){
             this.endereco.atualizarInformacoes(dados.endereco());
         }
     }
