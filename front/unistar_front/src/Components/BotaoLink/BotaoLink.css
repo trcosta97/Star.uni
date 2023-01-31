@@ -1,5 +1,5 @@
-.botao{
-    background-color: rgb(204, 228, 228);
+.botaoLink{
+    background-color: rgb(236, 235, 127);
     border-radius: 10px;
     font-weight: 700;
     font-size: 18px;
@@ -8,10 +8,11 @@
     cursor: pointer;
     color: #FFF;
     margin: 16px 0;
+   
 
 }
 
-.botao:hover{
-    color:rgb(24, 119, 119);
+.botaoLink:hover{
+    color: rgb(14, 157, 161);
     
 }

@@ -1,4 +1,5 @@
-import Botao from "../Botao/Botao"
+
+import Botao from "../Botao"
 import CampoTexto from "../CampoTexto"
 import Dropdown from "../Dropdown"
 import "./FormularioProfessor.css"
@@ -52,6 +53,8 @@ const FormularioProfessor = () => {
         evento.preventDefault()
         alert('formulário submetido')
     }
+
+    
 
     return (
         <section className="formulario">
