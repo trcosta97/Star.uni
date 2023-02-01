@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/Home"
-
+import Login from "./components/Login";
 import FormularioAluno from "./components/FormularioAluno";
 import FormularioProfessor from "./components/FormularioProfessor";
 
@@ -10,7 +10,8 @@ function App(){
       
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home/>}/>
+        <Route path="/" element={<Login/>}/>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/cadastroProfessor" element={<FormularioProfessor/>}/>
           <Route path="/cadastroaLUNO" element={<FormularioAluno/>}/>
         </Routes>
