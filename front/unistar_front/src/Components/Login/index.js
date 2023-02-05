@@ -1,12 +1,13 @@
-import Banner from "../Banner"
+
 import BotaoLogin from "../BotaoLogin"
 import CampoTexto from "../CampoTexto"
 import "./Login.css"
 
 const Login = () => {
     return (
-        <header className="login">
-            <Banner/>
+        <header className="bg">
+            <div className="login">
+            
             <form>
                 <CampoTexto obrigatorio={true} label="Login" placeholder="" />
                 <CampoTexto obrigatorio={true} label="Senha" placeholder="" />
@@ -14,7 +15,13 @@ const Login = () => {
                     Login
                 </BotaoLogin>
             </form>
+
+           
+
+        </div>
+
         </header>
+        
 
     )
 }
