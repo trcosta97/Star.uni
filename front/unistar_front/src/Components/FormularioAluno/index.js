@@ -1,4 +1,5 @@
 
+import { useState } from "react"
 import Botao from "../Botao"
 import CampoTexto from "../CampoTexto"
 import Dropdown from "../Dropdown"
@@ -16,7 +17,7 @@ const FormularioAluno = () => {
         'EM3 - b'
     ]
     
-    const uf = [
+    const estados = [
         'AC',
         'AL',
         'AP',
@@ -51,22 +52,34 @@ const FormularioAluno = () => {
         alert('formulário submetido')
     }
 
+    const [nome, setNome] = useState('')
+    const [cpf, setCpf] = useState('')
+    const [sala, setSala] = useState('')
+    const [cep, setCep] = useState('')
+    const [logradouro, setLogradouro] = useState('')
+    const [numero, setNumero] = useState('')
+    const [bairro, setBairro] = useState('')
+    const [complemento, setComplemento] = useState('')
+    const [cidade, setCidade] = useState('')
+    const [uf, setUf] = useState('')
+
     
 
     return (
         <section className="formulario">
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para cadastrar o aluno</h2>
-                <CampoTexto obrigatorio = {true} label="Nome" placeholder="Digite o nome" />
-                <CampoTexto obrigatorio = {true} label="CPF" placeholder="Digite o CPF" />
-                <Dropdown obrigatorio = {true} label="Sala" itens={salas} />
-                <CampoTexto obrigatorio = {true} label="CEP" placeholder="Digite o CEP" />
-                <CampoTexto obrigatorio = {true} label="Logradouro" placeholder="Digite o logradouro" />
-                <CampoTexto obrigatorio = {false} label="Numero" placeholder="Digite o número" />
-                <CampoTexto obrigatorio = {true} label="Bairro" placeholder="Digite o bairro" />
-                <CampoTexto obrigatorio = {false} label="Complemento" placeholder="Digite o complemento" />
-                <CampoTexto obrigatorio = {true} label="Cidade" placeholder="Digite a cidade" />
-                <Dropdown obrigatorio = {true} label="UF" itens={uf} />
+                <CampoTexto value ={nome} obrigatorio = {true} label="Nome*" onChange={setNome} placeholder="Digite o nome" />
+                <CampoTexto value ={cpf} obrigatorio = {true} label="CPF*" onChange={setCpf} placeholder="Digite o CPF" />
+                <Dropdown value ={sala} obrigatorio = {true} label="Sala*" onChange={setSala} itens={salas} />
+                <CampoTexto value ={cep} obrigatorio = {true} label="CEP*" onChange={setCep} placeholder="Digite o CEP" />
+                <CampoTexto value ={logradouro} obrigatorio = {true} label="Logradouro*" onChange={setLogradouro} placeholder="Digite o logradouro" />
+                <CampoTexto value ={numero} obrigatorio = {false} label="Numero" onChange={setNumero} placeholder="Digite o número" />
+                <CampoTexto value ={bairro} obrigatorio = {true} label="Bairro*" onChange={setBairro} placeholder="Digite o bairro" />
+                <CampoTexto value ={complemento} obrigatorio = {false} label="Complemento" onChange={setComplemento} placeholder="Digite o complemento" />
+                <CampoTexto value ={cidade} obrigatorio = {true} label="Cidade*" onChange={setCidade} placeholder="Digite a cidade" />
+                <Dropdown value ={uf} obrigatorio = {true} label="UF*" onChange={setUf} itens={estados} />
+                <h5>* Campos obrigatórios</h5>
                 <Botao>
                     Cadastrar
                 </Botao>
