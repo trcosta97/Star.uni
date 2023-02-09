@@ -3,32 +3,42 @@ import { useState } from "react"
 import BotaoLogin from "../BotaoLogin"
 import CampoTexto from "../CampoTexto"
 import "./Login.css"
+import axios from "axios"
 
 const Login = () => {
-    
+
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
- 
-    
-    
+
+    const aoSubmeterFormulario = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8080/login', { login, senha });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
     return (
-        <header className="bg">
+        <section className="bg">
             <div className="login">
-            
-            <form>
-                <CampoTexto value={login} obrigatorio={true} label="Login" onChange={setLogin} placeholder="" />
-                <CampoTexto value={login} obrigatorio={true} label="Senha" onChange={setSenha} placeholder="" />
-                <BotaoLogin className="botaoLogin">
-                    Login
-                </BotaoLogin>
-            </form>
 
-           
+                <form onSubmit={aoSubmeterFormulario}>
+                    <CampoTexto value={login} obrigatorio={true} label="Login" onChange={(event)=>setLogin(event.target.value)} placeholder="" />
+                    <CampoTexto value={senha} obrigatorio={true} label="Senha" onChange={(event) => setSenha(event.target.value)} placeholder="" />
+                    <BotaoLogin className="botaoLogin">
+                        Login
+                    </BotaoLogin>
+                </form>
 
-        </div>
 
-        </header>
-        
+
+            </div>
+
+        </section>
+
 
     )
 }
