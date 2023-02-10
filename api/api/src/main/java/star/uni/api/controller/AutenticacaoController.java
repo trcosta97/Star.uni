@@ -11,8 +11,8 @@ import star.uni.api.domain.usuario.Usuario;
 import star.uni.api.infra.security.DadosTokenJWT;
 import star.uni.api.infra.security.TokenService;
 
-@RestController
 
+@RestController
 @RequestMapping("/login")
 public class AutenticacaoController {
 
