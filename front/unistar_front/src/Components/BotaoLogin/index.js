@@ -2,7 +2,7 @@ import './BotaoLogin.css'
 
 const BotaoLogin = (props) =>{
     return(
-        <button className='botaoLogin'>
+        <button className='botaoLogin' type="submit">
             {props.children}
         </button>
     )

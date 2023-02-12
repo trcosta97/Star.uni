@@ -6,7 +6,7 @@ const CampoTexto = (props) =>{
             
 
             <label>{props.label}</label>
-            <input required={props.obrigatorio} placeholder={props.placeholder}/>
+            <input required={props.obrigatorio} placeholder={props.placeholder} value={props.value} onChange={props.onChange}/>
         
         </div>
     )

@@ -26,8 +26,8 @@ const Login = () => {
             <div className="login">
 
                 <form onSubmit={aoSubmeterFormulario}>
-                    <CampoTexto value={login} obrigatorio={true} label="Login" onChange={(event)=>setLogin(event.target.value)} placeholder="" />
-                    <CampoTexto value={senha} obrigatorio={true} label="Senha" onChange={(event) => setSenha(event.target.value)} placeholder="" />
+                    <CampoTexto value={login} obrigatorio={true} label="Login" onChange={(event)=>setLogin(event.target.value)}  />
+                    <CampoTexto value={senha} obrigatorio={true} label="Senha" onChange={(event) => setSenha(event.target.value)}  />
                     <BotaoLogin className="botaoLogin">
                         Login
                     </BotaoLogin>

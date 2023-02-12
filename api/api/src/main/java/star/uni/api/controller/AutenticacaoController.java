@@ -27,10 +27,20 @@ public class AutenticacaoController {
 
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados) {
-        var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        var authentication = manager.authenticate(authenticationToken);
-        var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
-        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        System.out.println(dados);
+        try{
+            var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
+            var authentication = manager.authenticate(authenticationToken);
+
+            var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
+            return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body("login inválido");
+        }
+
+
+
     }
 
 }
