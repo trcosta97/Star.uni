@@ -4,19 +4,30 @@ import BotaoLogin from "../BotaoLogin"
 import CampoTexto from "../CampoTexto"
 import "./Login.css"
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
+
+
 
 const Login = () => {
 
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
+    const navigate = useNavigate()
+   
 
     const aoSubmeterFormulario = async (event) => {
         event.preventDefault();
         try {
             const response = await axios.post('http://localhost:8080/login', { login, senha });
-            console.log(response.data);
+            sessionStorage.setItem('token', response.data.token)
+            navigate('/home');
         } catch (error) {
-            console.error(error);
+            console.error(error)
+            alert('Falha no login')
+            setLogin('')
+            setSenha('')
+            
+            
         }
     };
 

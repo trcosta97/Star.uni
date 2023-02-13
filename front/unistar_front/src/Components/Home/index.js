@@ -12,10 +12,10 @@ const Home = (props) => {
     return(
         <div className="home">
             <Banner/>
-            <BotaoLink endereco="/cadastroProfessor" >
+            <BotaoLink className="botaoHome" endereco="/cadastroProfessor" >
                 Cadastro de Professores
             </BotaoLink>
-            <BotaoLink endereco="/cadastroAluno" >
+            <BotaoLink className="botaoHome" endereco="/cadastroAluno" >
                 Cadastro de Alunos
             </BotaoLink>
             
