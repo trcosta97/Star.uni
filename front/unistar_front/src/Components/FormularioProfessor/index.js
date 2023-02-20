@@ -55,6 +55,8 @@ const FormularioProfessor = () => {
         alert('formulário submetido')
     }
 
+    const token = sessionStorage.getItem('token')
+ 
     const [nome, setNome] = useState('')
     const [cpf, setCpf] = useState('')
     const [disciplina, setDisciplina] = useState('')
