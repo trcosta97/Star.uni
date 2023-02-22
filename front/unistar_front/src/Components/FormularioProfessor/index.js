@@ -62,23 +62,37 @@ const FormularioProfessor = () => {
             email: email,
             cpf: cpf,
             disciplina: disciplina,
-            cep: cep,
-            logradouro: logradouro,
-            numero: numero,
-            bairro: bairro,
-            complemento: complemento,
-            cidade: cidade,
-            uf: uf
+            endereco: {
+                cep: cep,
+                logradouro: logradouro,
+                numero: numero,
+                bairro: bairro,
+                complemento: complemento,
+                cidade: cidade,
+                uf: uf
+            }
+
         };
         axios.post('http://localhost:8080/professores', data)
             .then(response => {
                 console.log(response.data);
+                alert("Professor(a) cadastrado!")
+                setNome('')
+                setEmail('')
+                setCpf('')
+                setCep('')
+                setLogradouro('')
+                setNumero('')
+                setBairro('')
+                setComplemento('')
+                setCidade('')
                 
+
             })
             .catch(error => {
                 console.log(error);
                 console.log(data)
-                
+
             });
     };
 
@@ -101,15 +115,15 @@ const FormularioProfessor = () => {
                 <h2>Preencha os dados para cadastrar o professor</h2>
                 <CampoTexto value={nome} obrigatorio={true} label="Nome*" onChange={event => setNome(event.target.value)} placeholder="Digite o nome" />
                 <CampoTexto value={email} obrigatorio={true} label="Email*" onChange={event => setEmail(event.target.value)} placeholder="Digite o email" />
-                <CampoTexto value={cpf} obrigatorio={true} label="CPF*" onChange={event =>setCpf(event.target.value)} placeholder="Digite o CPF" />
-                <Dropdown value={disciplina} obrigatorio={true} label="Disciplina*" onChange={event =>setDisciplina(event.target.value)} itens={disciplinas} />
-                <CampoTexto value={cep} obrigatorio={true} label="CEP*" onChange={event =>setCep(event.target.value)} placeholder="Digite o CEP" />
-                <CampoTexto value={logradouro} obrigatorio={true} label="Logradouro*" onChange={event =>setLogradouro(event.target.value)} placeholder="Digite o logradouro" />
-                <CampoTexto value={numero} obrigatorio={false} label="Numero" onChange={event =>setNumero(event.target.value)} placeholder="Digite o número" />
-                <CampoTexto value={bairro} obrigatorio={true} label="Bairro*" onChange={event =>setBairro(event.target.value)} placeholder="Digite o bairro" />
-                <CampoTexto value={complemento} obrigatorio={false} label="Complemento" onChange={event =>setComplemento(event.target.value)} placeholder="Digite o complemento" />
-                <CampoTexto value={cidade} obrigatorio={true} label="Cidade*" onChange={event =>setCidade(event.target.value)} placeholder="Digite a cidade" />
-                <Dropdown value={uf} obrigatorio={true} label="UF*" onChange={event =>setUf(event.target.value)} itens={estados} />
+                <CampoTexto value={cpf} obrigatorio={true} label="CPF*" onChange={event => setCpf(event.target.value)} placeholder="Digite o CPF" />
+                <Dropdown value={disciplina} obrigatorio={true} label="Disciplina*" onChange={event => setDisciplina(event.target.value)} itens={disciplinas} />
+                <CampoTexto value={cep} obrigatorio={true} label="CEP*" onChange={event => setCep(event.target.value)} placeholder="Digite o CEP" />
+                <CampoTexto value={logradouro} obrigatorio={true} label="Logradouro*" onChange={event => setLogradouro(event.target.value)} placeholder="Digite o logradouro" />
+                <CampoTexto value={numero} obrigatorio={false} label="Numero" onChange={event => setNumero(event.target.value)} placeholder="Digite o número" />
+                <CampoTexto value={bairro} obrigatorio={true} label="Bairro*" onChange={event => setBairro(event.target.value)} placeholder="Digite o bairro" />
+                <CampoTexto value={complemento} obrigatorio={false} label="Complemento" onChange={event => setComplemento(event.target.value)} placeholder="Digite o complemento" />
+                <CampoTexto value={cidade} obrigatorio={true} label="Cidade*" onChange={event => setCidade(event.target.value)} placeholder="Digite a cidade" />
+                <Dropdown value={uf} obrigatorio={true} label="UF*" onChange={event => setUf(event.target.value)} itens={estados} />
                 <h5>* Campos obrigatórios</h5>
                 <Botao>
                     Cadastrar
