@@ -22,9 +22,6 @@ public class AutenticacaoController {
     @Autowired
     private TokenService tokenService;
 
-
-
-
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados) {
         System.out.println(dados);
@@ -38,9 +35,5 @@ public class AutenticacaoController {
             e.printStackTrace();
             return ResponseEntity.badRequest().body("login inválido");
         }
-
-
-
     }
-
 }
